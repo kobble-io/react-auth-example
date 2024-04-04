@@ -21,7 +21,7 @@ npm install
 ### Compile and Hot-Reload for Development
 
 ```sh
-npm run start
+npm run dev
 ```
 
 ### Type-Check, Compile and Minify for Production
