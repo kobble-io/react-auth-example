@@ -8,6 +8,9 @@ This template will get you started developing with React with Kobble SDK.
 
 It uses Vite and includes React Router, Twailwind and [@kobbleio/auth-spa-js SDK](https://github.com/kobble-io/auth-spa-js).
 
+[![Deploy with Vercel](https://vercel.com/button)](https%3A%2F%2Fvercel.com%2Fnew%2Fclone%3Frepository-url%3Dhttps%3A%2F%2Fgithub.com%2Fkobble-io%2Freact-auth-example%26env%3DVITE_KOBBLE_DOMAIN%2CVITE_KOBBLE_CLIENT_ID%2CVITE_KOBBLE_REDIRECT_URI%26envDescription%3DThese%20variables%20can%20be%20obtained%20from%20your%20dashboard%20at%20Kobble.io%20after%20configuring%20your%20new%20OAuth%20Application.%26envLink%3Dhttps%3A%2F%2Fdocs.kobble.io%2Fproduct%2Fauthentication%2Foverview%26demo-title%3DReact%20Auth%20Example%26demo-description%3DExample%20React%20application%20including%20Kobble%20Authentication%20SDK%2C%20React%20Router%2C%20and%20Tailwind.%26demo-url%3Dhttps%3A%2F%2Fkobble-react-auth-example.vercel.app%26demo-image%3Dhttps%3A%2F%2Fgithub.com%2Fkobble-io%2Freact-auth-example%2Fblob%2Fmain%2F.readme%2Fscreenshot.png%3Fraw%3Dtrue)
+_[![Preview](https://github.com/kobble-io/react-auth-example/blob/main/.readme/preview-btn.svg?raw=true)](https://kobble-react-auth-example.vercel.app)_
+
 ## Getting Started
 
 ### Installation
