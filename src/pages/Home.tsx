@@ -1,56 +1,26 @@
-import {useEffect, useState} from 'react';
+import { useState } from 'react';
 import { Card } from '../components/Card';
 import {PoweredBy} from "../components/PoweredBy";
-import { kobbleClient } from "../kobble";
-import {User} from "@kobbleio/auth-spa-js";
+import {LoginButton, LogoutButton, SignedIn, SignedOut, useAuth, useKobble} from "@kobbleio/react";
 
 const Home = () => {
-    const [user, setUser] = useState<User | null>(null);
+    const { user } = useAuth();
+    const { kobble } = useKobble();
+
     const [actionResult, setActionResult] = useState<any>(null);
 
-    const isAuthenticated = !!user;
-
-    useEffect(() => {
-        const fetchUser = async () => {
-            const user = await kobbleClient.getUser();
-            setUser(user);
-        }
-
-        /**
-         * We fetch and store the user state on page load.
-         */
-        fetchUser();
-
-        /**
-         * We update the user state when it's updated.
-         */
-        kobbleClient.onAuthStateChanged((data) => {
-            // Handle user state change as needed
-            // For example, update the user object in the store
-            setUser(data.user);
-        })
-    }, [])
-
-    const login = () => {
-        kobbleClient.loginWithRedirect();
-    };
-
-    const logout = () => {
-        kobbleClient.logout();
-    };
-
     const getAccessToken = async () => {
-        const token = await kobbleClient.getAccessToken();
+        const token = await kobble?.getAccessToken();
         setActionResult(token);
     };
 
     const getIdToken = async () => {
-        const token = await kobbleClient.getIdToken();
+        const token = await kobble?.getIdToken();
         setActionResult(token);
     };
 
     const getUser = async () => {
-        const user = await kobbleClient.getUser();
+        const user = await kobble?.getUser();
         setActionResult(user);
     };
 
@@ -67,17 +37,23 @@ const Home = () => {
             <main className="py-20">
                 <span>Available actions:</span>
                 <div className="flex items-center gap-2 justify-between mt-5">
-                    {!isAuthenticated ? (
+                    <SignedOut>
                         <div className="flex items-center gap-2">
-                            <button onClick={login} className="rounded-full border border-[#236456] bg-[#112220] text-[#33C6AB] py-1 px-3">
-                                Login
-                            </button>
+                            <LoginButton>
+                                <button className="rounded-full border border-[#236456] bg-[#112220] text-[#33C6AB] py-1 px-3">
+                                    Login
+                                </button>
+                            </LoginButton>
                         </div>
-                    ) : (
+                    </SignedOut>
+                    <SignedIn>
                         <div className="flex items-center gap-2">
-                            <button onClick={logout} className="rounded-full border border-[#236456] bg-[#112220] text-[#33C6AB] py-1 px-3">
-                                Logout
-                            </button>
+                            <LogoutButton>
+                                <button className="rounded-full border border-[#236456] bg-[#112220] text-[#33C6AB] py-1 px-3">
+                                    Logout
+                                </button>
+                            </LogoutButton>
+
                             <button onClick={getIdToken} className="rounded-full border border-[#236456] bg-[#112220] text-[#33C6AB] py-1 px-3">
                                 Get Id Token
                             </button>
@@ -88,7 +64,7 @@ const Home = () => {
                                 Get Access Token
                             </button>
                         </div>
-                    )}
+                    </SignedIn>
                 </div>
 
                 <Card className="overflow-x-scroll w-[500px]">
