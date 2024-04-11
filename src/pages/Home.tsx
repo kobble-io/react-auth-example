@@ -1,7 +1,16 @@
 import { useState } from 'react';
 import { Card } from '../components/Card';
 import {PoweredBy} from "../components/PoweredBy";
-import {LoginButton, LogoutButton, ProfileLink, SignedIn, SignedOut, useAuth, useKobble} from "@kobbleio/react";
+import {
+    LoginButton,
+    LogoutButton,
+    PricingLink,
+    ProfileLink,
+    SignedIn,
+    SignedOut,
+    useAuth,
+    useKobble
+} from "@kobbleio/react";
 
 const Home = () => {
     const { user } = useAuth();
@@ -47,30 +56,33 @@ const Home = () => {
                         </div>
                     </SignedOut>
                     <SignedIn>
-                        <div className="flex items-center gap-2">
-                            <LogoutButton>
-                                <button className="rounded-full border border-[#236456] bg-[#112220] text-[#33C6AB] py-1 px-3">
-                                    Logout
+                        <div className="flex flex-col gap-2">
+                            <div className={'flex items-center gap-3'}>
+                                <LogoutButton>
+                                    <button className="rounded-full border border-[#236456] bg-[#112220] text-[#33C6AB] py-1 px-3">
+                                        Logout
+                                    </button>
+                                </LogoutButton>
+
+                                <ProfileLink className="rounded-full border border-[#236456] bg-[#112220] text-[#33C6AB] py-1 px-3">
+                                    My Profile
+                                </ProfileLink>
+
+                                <PricingLink className="rounded-full border border-[#236456] bg-[#112220] text-[#33C6AB] py-1 px-3">
+                                    View Pricing
+                                </PricingLink>
+                            </div>
+                            <div className={'flex items-center gap-3'}>
+                                <button onClick={getIdToken} className="rounded-full border border-[#236456] bg-[#112220] text-[#33C6AB] py-1 px-3">
+                                    Get Id Token
                                 </button>
-                            </LogoutButton>
-
-                            <ProfileLink className="rounded-full border border-[#236456] bg-[#112220] text-[#33C6AB] py-1 px-3">
-                                My Profile
-                            </ProfileLink>
-
-                            <ProfileLink className="rounded-full border border-[#236456] bg-[#112220] text-[#33C6AB] py-1 px-3">
-                                View Pricing
-                            </ProfileLink>
-
-                            <button onClick={getIdToken} className="rounded-full border border-[#236456] bg-[#112220] text-[#33C6AB] py-1 px-3">
-                                Get Id Token
-                            </button>
-                            <button onClick={getUser} className="rounded-full border border-[#236456] bg-[#112220] text-[#33C6AB] py-1 px-3">
-                                Get User
-                            </button>
-                            <button onClick={getAccessToken} className="rounded-full border border-[#236456] bg-[#112220] text-[#33C6AB] py-1 px-3">
-                                Get Access Token
-                            </button>
+                                <button onClick={getUser} className="rounded-full border border-[#236456] bg-[#112220] text-[#33C6AB] py-1 px-3">
+                                    Get User
+                                </button>
+                                <button onClick={getAccessToken} className="rounded-full border border-[#236456] bg-[#112220] text-[#33C6AB] py-1 px-3">
+                                    Get Access Token
+                                </button>
+                            </div>
                         </div>
                     </SignedIn>
                 </div>
