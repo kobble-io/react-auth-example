@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Card } from '../components/Card';
 import {PoweredBy} from "../components/PoweredBy";
-import {LoginButton, LogoutButton, SignedIn, SignedOut, useAuth, useKobble} from "@kobbleio/react";
+import {LoginButton, LogoutButton, ProfileLink, SignedIn, SignedOut, useAuth, useKobble} from "@kobbleio/react";
 
 const Home = () => {
     const { user } = useAuth();
@@ -53,6 +53,14 @@ const Home = () => {
                                     Logout
                                 </button>
                             </LogoutButton>
+
+                            <ProfileLink className="rounded-full border border-[#236456] bg-[#112220] text-[#33C6AB] py-1 px-3">
+                                My Profile
+                            </ProfileLink>
+
+                            <ProfileLink className="rounded-full border border-[#236456] bg-[#112220] text-[#33C6AB] py-1 px-3">
+                                View Pricing
+                            </ProfileLink>
 
                             <button onClick={getIdToken} className="rounded-full border border-[#236456] bg-[#112220] text-[#33C6AB] py-1 px-3">
                                 Get Id Token
